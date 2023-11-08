@@ -1,0 +1,10 @@
+###register
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "email@email.com",
+    "userName": "Leeona1",
+    "password": "pass1234"
+}
