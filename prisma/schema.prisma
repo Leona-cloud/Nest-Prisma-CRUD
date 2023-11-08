@@ -11,53 +11,27 @@ datasource db {
 }
 
 model User {
-  id         Int     @id @default(autoincrement())
-  first_name String  @db.VarChar(100)
-  last_name  String? @db.VarChar(100)
-  email      String  @unique @db.VarChar(255)
+  id     Int    @id  @default(autoincrement())
+  userName String
+  email String  @unique
+  password String
+  isAuthor Boolean @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime   @updatedAt
+  notes Note[]
 
-  role    Role @relation(fields: [role_id], references: [id])
-  role_id Int
-
-  created_stories Story[] @relation("created_user")
-
-  @@map("users")
+  @@unique([id, email])
+  @@map("Users")
 }
 
-model Story {
-  id           Int    @id @default(autoincrement())
-  name         String
-  created_by   Int
-  created_user User   @relation(name: "created_user", fields: [created_by], references: [id])
 
-  @@map("stories")
+model Note {
+  id     Int    @id  @default(autoincrement())
+  title String 
+  body String
+  isStarred Boolean @default(false)
+  author User  @relation(fields: [authorId], references: [id])
+  authorId  Int
+  
 }
 
-model Role {
-  id         Int       @unique @default(autoincrement())
-  name       String
-  created_at DateTime  @default(now())
-  updated_at DateTime? @updatedAt()
-  deleted_at DateTime? @db.Timestamp()
-
-  Permission Permission[]
-  User       User[]
-
-  @@map("roles")
-}
-
-model Permission {
-  id       Int     @unique @default(autoincrement())
-  role     Role    @relation(fields: [role_id], references: [id])
-  role_id  Int
-  action   String
-  subject  String
-  inverted Boolean @default(false)
-  reason   String? @db.Text()
-  conditions Json?
-  created_at DateTime  @default(now())
-  updated_at DateTime? @updatedAt()
-  deleted_at DateTime? @db.Timestamp()
-
-  @@map("permissions")
-}

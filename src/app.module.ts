@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
-import { CaslModule } from './casl/casl.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -9,7 +10,8 @@ import { CaslModule } from './casl/casl.module';
       isGlobal: true,
     }),
     PrismaModule,
-    CaslModule,
+    UsersModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
