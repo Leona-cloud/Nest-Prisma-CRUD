@@ -29,6 +29,14 @@ export class AuthService {
     return await bcrypt.compare(password, hash);
   }
 
+  async findUserById(id: number) {
+    return await this.prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+  }
+
   async SignUp(options: SignUpDto) {
     const user = await this.prisma.user.findUnique({
       where: {
