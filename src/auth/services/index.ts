@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma/services';
 import * as bcrypt from 'bcryptjs';
 import { SignInDto, SignUpDto } from 'src/auth/dtos';
-import { DuplicateUserException } from 'src/users/errors';
+import { DuplicateUserException } from '../errors';
 import { Prisma } from '@prisma/client';
 import { InvalidCredentialsException } from '../errors';
 
