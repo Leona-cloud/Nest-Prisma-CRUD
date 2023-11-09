@@ -9,3 +9,9 @@ export class CreateNotesDto {
   @IsString()
   body: string;
 }
+
+export class UpdateNotesDto {
+  @IsNotEmpty()
+  @IsString()
+  body: string;
+}

@@ -8,3 +8,13 @@ Authorization: "Bearer "
     "title": "My note",
     "body": "Hello jesus"
 }
+
+
+###
+PUT http://localhost:3000/notes/4
+Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlhdCI6MTY5OTU2NjE1MywiZXhwIjoxNjk5NTY5NzUzfQ.0sGFflsTyH_S-4aWX09-px5wT2vjiqPsHVOUI8k4eXY"
+
+{
+    "body": "My baby"
+}
