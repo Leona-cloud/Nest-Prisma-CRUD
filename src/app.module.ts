@@ -11,7 +11,7 @@ import { NotesModule } from './notes/notes.module';
     }),
     PrismaModule,
     AuthModule,
-    NotesModule
+    NotesModule,
   ],
   controllers: [],
   providers: [],

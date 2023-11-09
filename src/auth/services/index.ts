@@ -57,6 +57,10 @@ export class AuthService {
       password: hashedPassword,
     };
 
+    if (options.isAuthor) {
+      createUserOptions.isAuthor = options.isAuthor;
+    }
+
     const createdUser = await this.prisma.user.create({
       data: createUserOptions,
     });
